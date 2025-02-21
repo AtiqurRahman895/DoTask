@@ -49,17 +49,14 @@ const Header = () => {
   return (
     <header
       ref={headerRef}
-      className={`
-        ${path==="/login"?"fixed":"sticky bg-black"}
-        text-white top-0 z-50 w-full py-2
-      `}
+      className={`fixed text-white top-0 z-50 w-full`}
     >
       <div className={`navbar container`}>
         <div className="navbar-start gap-x-4">
 
           <Link
             to={"/"}
-            className={`btn btn-ghost hover:bg-transparent font-family-fugaz !pl-0 !ml-0 !text-3xl text-custom-primary hover:text-custom-primary uppercase`}
+            className={`flex items-center gap-1 font-family-fugaz !text-3xl ${path==="/login"?"text-white hover:!text-white":"text-custom-primary hover:!text-custom-primary"} uppercase`}
           >
             <img src={"https://i.ibb.co.com/nQ396hD/study-only-logo.png"} alt="logo" className="w-[45px] hidden lg:block"/>
             Do Task
@@ -140,7 +137,7 @@ const Header = () => {
 
               <div
                 onClick={logoutUser}
-                className="primaryButton hover:scale-105 hidden sm:inline-block"
+                className={`primaryButton hover:scale-105 hidden sm:inline-block ${path==="/login"&&"!border-white"}`} 
               >
                 Log Out
               </div>

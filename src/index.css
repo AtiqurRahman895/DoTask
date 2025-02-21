@@ -42,6 +42,9 @@
 body {
   @apply text-black dark:text-white bg-white dark:bg-black overflow-x-hidden font-family-manrope font-medium;
 }
+body{
+  background-image: url(https://www.transparenttextures.com/patterns/batthern.png);
+}
 
 .container {
   margin-inline: auto;
@@ -116,14 +119,14 @@ ol{
 /* Custom utilities */
 
 .navbarAnimation {
-  background-color: rgba(28, 15, 35, 0.4);
+  background-color: rgba(24, 22, 59, 0.4);
   color: white;
   backdrop-filter: blur(20px);
 }
 
 /* .navbarAnimation {
-  @apply bg-black text-white !backdrop-blur-lg
-} */ */
+  @apply bg-black text-white !backdrop-blur-[20px]
+}  */
 
 .sectionHeaderWidth{
   @apply w-[90%] sm:w-[80%] mx-auto

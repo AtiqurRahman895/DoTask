@@ -12,7 +12,7 @@ const ErrorPage = () => {
       <div className="h-lvh place-items-center grid gap-3 content-center bg-white">
         {status === 404 ? (
           <img
-            src={'"notFound.svg'}
+            src={'pageNotFound.svg'}
             alt={`Error ${status}: ${statusText}`}
             className="w-[200px]"
           />

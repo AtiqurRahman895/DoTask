@@ -26,7 +26,7 @@ const TaskStatusBar = ({taskStatus}) => {
   }
 
   return (
-        <div className="hide-scrollbar bg-custom-metalic-gray rounded-md h-[600px] overflow-y-auto relative">
+        <div className="hide-scrollbar bg-[rgba(63,76,132,0.4)] rounded-md h-[600px] overflow-y-auto relative">
             <div className="bg-custom-primary text-white p-4 uppercase text-center sticky top-0 backdrop-brightness-50">
                 <h5>{statusName}</h5>
             </div>

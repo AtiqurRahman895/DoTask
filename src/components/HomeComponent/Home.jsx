@@ -22,7 +22,7 @@ const Home = () => {
   // } = useQuery(["notes"], fetchNotes);
   
   return (
-    <main className="space-y-14 py-12 min-h-lvh">
+    <main className="space-y-14 pt-28 pb-12 min-h-lvh">
       <TitleSection title={"Home"} />
       <section className="">
           <div className="container space-y-10">
