@@ -1,37 +1,20 @@
-import { useContext, useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import useSecureAxios from "../../Hooks/useSecureAxios";
-import { AuthContext } from "../../Provider/AuthProvider";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import TaskTitleInput from "./TaskTitleInput";
 import TaskDetailsInput from "./TaskDetailsInput";
-// import TaskModal from "./TaskModal";
+import { MdEditSquare } from "react-icons/md";
 
-const AddTaskModal = () => {
-  const { user } = useContext(AuthContext);
+const UpdateTaskModal = ({task, refetch}) => {
   const secureAxios = useSecureAxios();
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDetails, setTaskDetails] = useState("");
   const [openModal, setOpenModal] = useState(false);
 
-  const queryClient = useQueryClient();
-
-  const addTaskMutation = useMutation({
-    mutationFn: async (credentials) => {
-      await secureAxios.post(`/addTask`, credentials)
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries(["tasks", "to-do"]); // Invalidate only the specific status
-      toast.success("Successfully added a new task!");
-      setTaskTitle("")
-      setTaskDetails("")
-      setOpenModal(false);
-    },
-    onError:(error)=>{
-      console.error("Failed to add new task!", error);
-      toast.error("Failed to add new task!");
-    }
-  });
+  useEffect(()=>{
+    setTaskTitle(task?.taskTitle)
+    setTaskDetails(task?.taskDetails)
+  },[task])
 
 
   const handleSubmit = async (e) => {
@@ -47,19 +30,30 @@ const AddTaskModal = () => {
       );
       return;
     }
-    const credentials = { email: user.email, taskTitle, taskDetails };
+    const credentials = { taskTitle, taskDetails, lastUpdate:task.lastUpdate };
 
-    addTaskMutation.mutate(credentials)
+    try {
+        await secureAxios.put(`/updateTask/${task?._id}`, credentials)
+        toast.success("Successfully updated this task!");
+        setTaskTitle("")
+        setTaskDetails("")
+        setOpenModal(false);
+        refetch()
+
+        console.log(task)
+    } catch (error) {
+        console.error("Failed to update this task!", error);
+        toast.error("Failed to update this task!");
+    }
+
+    
   };
 
   return (
-    // <TaskModal modalText="Add a new Task" openModal={openModal} setOpenModal={setOpenModal} handleSubmit={handleSubmit} taskTitle={taskTitle} setTaskTitle={setTaskTitle} taskDetails={taskDetails} setTaskDetails={setTaskDetails} />
     <>
-      <button
-        className={`primaryButton`}
-        onClick={() => setOpenModal(true)}
-        >
-        Add New
+
+      <button onClick={() => setOpenModal(true)} className="outlineButton activeOutlineButton !px-1 !py-1" >
+            <MdEditSquare className="text-lg"/>
       </button>
       <dialog id="reject_modal" className="!m-0 modal bg-[rgba(0,0,0,.4)]" open={openModal} >
 
@@ -72,10 +66,10 @@ const AddTaskModal = () => {
               </button>
               <form onSubmit={handleSubmit} className="space-y-3">
               
-              <h3 className="text-white !text-4xl">Add a new task</h3>
+              <h3 className="text-white !text-4xl">Update this task</h3>
 
-              <TaskTitleInput taskTitle={taskTitle} setTaskTitle={setTaskTitle} />
-              <TaskDetailsInput taskDetails={taskDetails} setTaskDetails={setTaskDetails} />
+              <TaskTitleInput taskTitle={taskTitle} setTaskTitle={setTaskTitle}/>
+              <TaskDetailsInput taskDetails={taskDetails} setTaskDetails={setTaskDetails}/>
 
               <div className="flex pt-4">
                   <button
@@ -93,4 +87,4 @@ const AddTaskModal = () => {
   );
 };
 
-export default AddTaskModal;
+export default UpdateTaskModal;

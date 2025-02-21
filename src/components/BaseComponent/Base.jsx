@@ -8,13 +8,25 @@ import { AuthContext } from "../../Provider/AuthProvider";
 const Base = () => {
   const [lightTheme, setLightTheme]=useState(false)
   const {user,loading}= useContext(AuthContext)
+  const taskStatusList=[
+    {
+      _id:1,
+      statusName:"to-do"
+    },{
+      _id:2,
+      statusName:"in-progress"
+    },{
+      _id:1,
+      statusName:"done"
+    },
+  ]
 
   const location = useLocation();
   const path = location.pathname;
 
 
   const value = {
-    lightTheme, setLightTheme,
+    lightTheme, setLightTheme, taskStatusList
   };
 
   return (

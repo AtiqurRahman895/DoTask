@@ -1,33 +1,41 @@
+import { useContext } from "react";
+import useSecureAxios from "../../Hooks/useSecureAxios";
 import TitleSection from "../CommonComponent/TitleSection";
 import AddTaskModal from "./AddTaskModal";
+import { TransferLists } from "../../Contexts/TransferLists";
+import TaskStatusBar from "./taskStatusBar";
 
 const Home = () => {
+  const {taskStatusList}=useContext(TransferLists)
+  // const secureAxios = useSecureAxios();
+
+  // const fetchNotes = async () => {
+  //   const res = await secureAxios.get("/notes");
+  //   return res.data;
+  // };
+  // const {
+  //   isLoading: loading,
+  //   data: notes = [],
+  //   refetch,
+  //   isError,
+  //   error,
+  // } = useQuery(["notes"], fetchNotes);
+  
   return (
-    <main className="space-y-14 mt-12">
+    <main className="space-y-14 py-12 min-h-lvh">
       <TitleSection title={"Home"} />
       <section className="">
-          <div className="container space-y-12">
+          <div className="container space-y-10">
             <div className="sectionHeaderWidth text-center">
               <AddTaskModal />
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              {
-                // contactInfoList?.map((contactInfo,index)=>(
-                //     <Link key={index} to={contactInfo.link} target={index!==0?"_blank":""}
-                //         className="relative bg-custom-metalic-gray text-black dark:text-white rounded-md px-4 py-10 flex items-center gap-4 overflow-hidden"
-                //     >
-                        
-                //         <ReactSVG src={contactInfo.svg} className='w-16 text-custom-primary mb-2'/>
-                //         <div className="">
-                //             <h4>{contactInfo.text}</h4>
-                //             <p>{contactInfo.info}</p>
-                //         </div>
-                //         <ReactSVG src={contactInfo.svg} className='absolute -right-0.5 -bottom-0.5 opacity-20 w-12'/>
-
-                //     </Link>
-                // ))
-              }
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                {
+                    taskStatusList?.map((taskStatus,index)=>(
+                        <TaskStatusBar key={index} taskStatus={taskStatus} />
+                    ))
+                }
             </div>
           </div>
       </section>
