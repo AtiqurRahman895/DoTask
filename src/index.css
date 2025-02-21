@@ -1,0 +1,219 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
+
+@import "tailwindcss";
+@plugin "daisyui";
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+/* Tailwind directives */
+
+/* Custom theme configuration */
+@theme {
+  
+  /* Fonts */
+  --font-family-manrope: "Manrope", sans-serif;
+  --font-family-fugaz: "Fugaz One", serif;
+
+  /* Breakpoints */
+  --breakpoint-xs: 490px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* Colors */
+  --color-custom-primary: #352cd4;
+  --color-custom-half-primary: rgb(53 44 212 / 30%);
+  --color-black: #12102e;
+  --color-font: #756F7D;
+  --color-custom-gray: #e6e6e6;
+  --color-custom-metalic-gray: #837c8526;
+
+}
+
+/* Custom base styles */
+
+* {
+  @apply scroll-smooth;
+}
+
+body {
+  @apply text-black dark:text-white bg-white dark:bg-black overflow-x-hidden font-family-manrope font-medium;
+}
+
+.container {
+  margin-inline: auto;
+  padding-inline: 5%;
+}
+
+@media (min-width: 490px) {
+  .container {
+    padding-inline: 1rem !important;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold;
+}
+h1 {
+  @apply text-[clamp(1.75rem,1.1578947368421053rem+2.9605263157894735vw,4rem)];
+}
+h2 {
+  @apply text-[clamp(1.7rem,1.3285714285714285rem+1.8571428571428572vw,3rem)];
+}
+h3 {
+  @apply text-[clamp(1.6rem,1.342857142857143rem+1.2857142857142856vw,2.5rem)] ;
+}
+h4 {
+  @apply text-[1.4rem] ;
+}
+h5 {
+  @apply text-[1.25rem];
+}
+h6 {
+  @apply text-[1rem];
+}
+
+p,
+span,
+li,
+a,b {
+  @apply text-[14px] leading-loose;
+}
+a{
+  @apply hover:scale-105 duration-500
+}
+header a{
+  @apply hover:text-inherit duration-500
+}
+footer a{
+  @apply hover:font-bold 
+}
+
+ul,ol{
+  @apply space-y-1 mb-1.5 ml-8
+}
+ul{
+  list-style: outside;
+  /* margin-left: 2rem; */
+}
+ol{
+  list-style: decimal;
+  /* margin-left: 1rem; */
+}
+
+.fromWrapper input,
+.fromWrapper textarea,
+.fromWrapper select {
+  @apply border-[#ffffff4d];
+}
+
+
+
+
+/* Custom utilities */
+
+.navbarAnimation {
+  background-color: rgba(28, 15, 35, 0.4);
+  color: white;
+  backdrop-filter: blur(20px);
+}
+
+/* .navbarAnimation {
+  @apply bg-black text-white !backdrop-blur-lg
+} */ */
+
+.sectionHeaderWidth{
+  @apply w-[90%] sm:w-[80%] mx-auto
+}
+.sectionHeaderSubtextWidth{
+  @apply text-[16px] xs:text-lg md:text-xl
+}
+
+.primaryButton{
+  @apply cursor-pointer px-4 py-2 text-center text-sm text-nowrap font-bold rounded-md duration-500 text-white bg-custom-primary border border-custom-primary hover:shadow-sm 
+}
+.activePrimaryButton{
+  @apply hover:bg-custom-half-primary
+}
+
+.outlineButton{
+  @apply cursor-pointer px-4 py-2 text-center text-sm text-nowrap font-bold rounded-md duration-500 text-custom-primary bg-transparent border hover:shadow-sm 
+}
+.activeOutlineButton{
+  @apply hover:bg-custom-primary hover:text-white
+}
+
+.fromWrapper{
+  @apply card w-full shrink-0 bg-custom-primary text-white shadow-xl p-4 md:p-8 my-20 space-y-4 
+}
+.formSubmitBtn{
+  @apply btn btn-block !bg-white hover:!bg-custom-primary !border-white !text-custom-primary hover:!text-white
+}
+
+.footerCopyRights a {
+  animation: glowMyPortfolioLink 5s linear infinite;
+}
+@keyframes glowMyPortfolioLink {
+  /* #4b57ff', '#675cff */
+  0% {
+    color: #1C0F23;
+  }
+
+  10% {
+    color:  #1a1e62;
+  }
+  50% {
+    color:  #312c7e;
+  }
+  90% {
+    color:  #0b073f;
+  }
+  100% {
+    color: #1C0F23
+  }
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Form and Inputs */
+
+.fromWrapper{
+  @apply card w-full shrink-0 bg-custom-primary text-white shadow-xl p-4 md:p-8 my-20 space-y-4 
+}
+.formSubmitBtn{
+  @apply btn btn-block !bg-white hover:!bg-custom-primary !border-white !text-custom-primary hover:!text-white
+}
+.input:focus, .input:focus-within,
+.textarea:focus, .textarea:focus-within,
+.select:focus, .select:focus-within{
+  @apply border-white
+}
+.input:focus, .input:focus-within,
+.textarea:focus, .textarea:focus-within,
+.select:focus, .select:focus-within{
+  color: inherit;
+  background-color: transparent !important;
+}
+.input:disabled ,
+.textarea:disabled {
+  color: #7272729b;
+  border-color: #7272729b !important;
+  background-color: #6868682b !important;
+}
+.invalidInput{
+  @apply border focus:border-rose-300
+}
+
+.customInput{
+  @apply input-ghost !text-white border-white focus:border-white
+}
+
