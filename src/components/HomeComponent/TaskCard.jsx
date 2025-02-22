@@ -22,7 +22,7 @@ const TaskCard = ({ task, refetch }) => {
     const deleteTask = window.confirm(`Are you sure about deleting this task?`);
     if (deleteTask) {
       try {
-        await secureAxios.delete(`/deleteTask/${_id}`);
+        await secureAxios.delete(`/tasks/${_id}`);
         refetch();
         toast.info(`You have successfully deleted one task`);
       } catch (error) {

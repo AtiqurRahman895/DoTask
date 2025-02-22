@@ -18,7 +18,7 @@ const Home = () => {
   const changeTaskStatusMutation = useMutation({
     mutationFn: async ({ _id, status }) => {
       const credentials = { status };
-      await secureAxios.put(`/updateTask/${_id}`, credentials);
+      await secureAxios.put(`/tasks/${_id}`, credentials);
     },
     onSuccess: (_,{ status }) => {
       queryClient.invalidateQueries(["tasks", status]); 

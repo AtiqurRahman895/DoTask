@@ -15,7 +15,7 @@ const Login = () => {
     try {
       let result = await loginWithGoogle();
       // setUser(result.user)
-        await normalAxios.post("/addUser", {
+        await normalAxios.post("/users", {
         image:result.user.photoURL,
         name:result.user.displayName,
         email: result.user.email,

@@ -32,7 +32,7 @@ const UpdateTaskModal = ({task, refetch, openModal, setOpenModal}) => {
     const credentials = { taskTitle, taskDetails };
 
     try {
-        await secureAxios.put(`/updateTask/${task?._id}`, credentials)
+        await secureAxios.put(`/tasks/${task?._id}`, credentials)
         toast.success("Successfully updated this task!");
         setTaskTitle("")
         setTaskDetails("")

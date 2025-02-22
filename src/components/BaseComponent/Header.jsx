@@ -58,7 +58,7 @@ const Header = () => {
             to={"/"}
             className={`flex items-center gap-1 font-family-fugaz !text-3xl ${path==="/login"?"text-white hover:!text-white":"text-custom-primary hover:!text-custom-primary"} uppercase`}
           >
-            <img src={"https://i.ibb.co.com/nQ396hD/study-only-logo.png"} alt="logo" className="w-[45px] hidden lg:block"/>
+            <img src={"https://i.ibb.co.com/spyL2gxs/Do-Task-logo.png"} alt="logo" className="w-[45px] hidden lg:block"/>
             Do Task
           </Link>
         </div>

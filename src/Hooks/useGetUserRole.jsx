@@ -26,7 +26,7 @@ const useGetUserRole = () => {
           return "guest"
         }else{
             try {
-              const res = await normalAxios.get(`/user/${user.email}`, {
+              const res = await normalAxios.get(`/users/${user.email}`, {
                   headers: {
                       token: `Bearer ${token}`,
                       email: user.email,

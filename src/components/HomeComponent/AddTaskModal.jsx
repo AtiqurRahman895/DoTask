@@ -18,7 +18,7 @@ const AddTaskModal = () => {
 
   const addTaskMutation = useMutation({
     mutationFn: async (credentials) => {
-      await secureAxios.post(`/addTask`, credentials)
+      await secureAxios.post(`/tasks`, credentials)
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["tasks", "to-do"]); // Invalidate only the specific status

@@ -25,42 +25,6 @@ const NavMenus = ({ActiveClass="!font-extrabold !text-black"}) => {
         </NavLink>
       </li>
 
-      <li className="w-fit">
-        <NavLink
-          to={"/all_sessions"}
-          className={`${
-            path === "/all_sessions" && ActiveClass
-          } ${normalClass}`}
-        >
-          <PiListNumbersFill />
-          All Sessions
-        </NavLink>
-      </li>
-
-      <li className="w-fit">
-        <NavLink
-          to={"/faq"}
-          className={`${
-            path === "/faq" && ActiveClass
-          } ${normalClass}`}
-        >
-          <PiSealQuestionFill />
-          FAQ
-        </NavLink>
-      </li>
-
-      <li className="w-fit">
-        <NavLink
-          to={"/tutors"}
-          className={`${
-            path === "/tutors" && ActiveClass
-          } ${normalClass}`}
-        >
-          <GiTeacher />
-          Tutors
-        </NavLink>
-      </li>
-
       {
         (user?.email)&&(
           <li className="w-fit">

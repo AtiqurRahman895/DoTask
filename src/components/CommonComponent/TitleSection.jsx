@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 const TitleSection = ({ title }) => {
   return (
     <Helmet>
-      <title>{title} | Study Only</title>
+      <title>{title} | Do Task</title>
     </Helmet>
   );
 };

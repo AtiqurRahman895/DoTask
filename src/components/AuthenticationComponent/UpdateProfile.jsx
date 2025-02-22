@@ -32,7 +32,7 @@ const UpdateProfile = () => {
     try {
       await updateUserProfile(name, image)
       const credentials= {name, image}
-      await secureAxios.put(`/user/${user?.email}`, credentials);
+      await secureAxios.put(`/users/${user?.email}`, credentials);
       toast.success("User Profile successfully updated!");
       navigate("/");
     } catch (error) {
