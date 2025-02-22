@@ -40,7 +40,7 @@
 }
 
 body {
-  @apply text-black dark:text-white bg-white dark:bg-black overflow-x-hidden font-family-manrope font-medium;
+  @apply min-h-dvh text-black dark:text-white bg-white dark:bg-black overflow-x-hidden font-family-manrope font-medium;
 }
 body{
   background-image: url(https://www.transparenttextures.com/patterns/batthern.png);

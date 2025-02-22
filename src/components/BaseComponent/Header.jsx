@@ -104,9 +104,9 @@ const Header = () => {
                   </div>
                   <ul
                     tabIndex={0}
-                    className="menu menu-sm text-black !list-none !space-y-1 !m-0"
+                    className="menu menu-sm text-black !list-none !space-y-1 !m-0 w-full"
                   >
-                    {user.emailVerified || (
+                    {/* {user.emailVerified || (
                       <li className="hover:scale-105 duration-200">
                         <p
                           onClick={verifyAccount}
@@ -116,19 +116,19 @@ const Header = () => {
                           Verify now{" "}
                         </p>
                       </li>
-                    )}
+                    )} */}
 
-                    {/* <li>
-                      <Link to={"/update-profile"} className="">
+                    <li>
+                      <Link to={"/update-profile"} className="hover:bg-custom-metalic-gray rounded-md">
                         Update Profile
                       </Link>
-                    </li> */}
-                    <li>
-                      <Link to={"/change-password"} className="">
+                    </li>
+                    {/* <li>
+                      <Link to={"/change-password"} className="hover:bg-custom-metalic-gray rounded-md">
                         Change Password
                       </Link>
-                    </li>
-                    <li className="hover:scale-105 duration-200 sm:hidden">
+                    </li> */}
+                    <li className="hover:scale-105 duration-400 sm:hidden hover:bg-custom-metalic-gray rounded-md">
                       <p onClick={logoutUser}>Log Out</p>
                     </li>
                   </ul>

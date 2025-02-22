@@ -41,9 +41,9 @@ const AddTaskModal = () => {
       .trim()
       .split(/\s+/).length;
 
-    if (taskDetails_word_count < 5) {
+    if (taskDetails_word_count < 5 || taskDetails_word_count > 50) {
       toast.warning(
-        `Please lenghten task details to 5 or more word! (Currently has ${taskDetails_word_count} words)`
+        `Please expand the task details to between 5 and 50 words! (Currently has ${taskDetails_word_count} words)`
       );
       return;
     }

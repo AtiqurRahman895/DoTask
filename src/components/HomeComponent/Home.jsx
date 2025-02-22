@@ -46,13 +46,12 @@ const Home = () => {
 
     if(status!==activeTask.status){
       changeTaskStatusMutation.mutate({ _id, status });
-
     }
     setActiveTask(null);
   };
 
   return (
-    <main className="space-y-14 pt-28 pb-12 min-h-lvh">
+    <main className="space-y-14 pt-28 pb-12">
       <TitleSection title="Home" />
       <section>
         <div className="container space-y-10">

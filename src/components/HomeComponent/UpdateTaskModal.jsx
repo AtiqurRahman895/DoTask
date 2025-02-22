@@ -23,11 +23,11 @@ const UpdateTaskModal = ({task, refetch, openModal, setOpenModal}) => {
       .trim()
       .split(/\s+/).length;
 
-    if (taskDetails_word_count < 5) {
-      toast.warning(
-        `Please lenghten task details to 5 or more word! (Currently has ${taskDetails_word_count} words)`
-      );
-      return;
+    if (taskDetails_word_count < 5 || taskDetails_word_count > 50) {
+        toast.warning(
+          `Please expand the task details to between 5 and 50 words! (Currently has ${taskDetails_word_count} words)`
+        );
+        return;
     }
     const credentials = { taskTitle, taskDetails };
 
@@ -39,7 +39,6 @@ const UpdateTaskModal = ({task, refetch, openModal, setOpenModal}) => {
         setOpenModal(false);
         refetch()
 
-        console.log(task)
     } catch (error) {
         console.error("Failed to update this task!", error);
         toast.error("Failed to update this task!");

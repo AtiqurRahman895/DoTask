@@ -30,9 +30,9 @@ const Login = () => {
 
   
   return (
-    <section className="min-h-lvh" style={{backgroundColor: `var(--color-custom-primary)`, backgroundImage:`url(https://www.transparenttextures.com/patterns/batthern.png)`}}>
+    <section className="" style={{backgroundColor: `var(--color-custom-primary)`, backgroundImage:`url(https://www.transparenttextures.com/patterns/batthern.png)`}}>
       <div className="container hero flex items-center justify-center">
-        <div className="h-lvh">
+        <div className="h-dvh">
 
           <div className="sectionHeaderWidth text-center h-[100%] flex flex-col justify-center items-center gap-2 text-white">
             <h1 className="">Organize & Achieve with DoTask</h1>
