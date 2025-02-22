@@ -19,14 +19,14 @@ const TaskCard = ({ task, refetch }) => {
   const { formattedTime, dateFormatted } = convertTo12HourFormat(task?.lastUpdate);
 
   const handleDeleteButton = async (_id) => {
-    const deleteTask = window.confirm(`Are you sure about deleting this task?`);
+    const deleteTask = window.confirm(`Are you sure you want to delete this task?`);
     if (deleteTask) {
       try {
         await secureAxios.delete(`/tasks/${_id}`);
         refetch();
-        toast.info(`You have successfully deleted one task`);
+        toast.info(`Task successfully deleted`);
       } catch (error) {
-        toast.error(`Failed to delete one task`);
+        toast.error(`Failed to delete task`);
         console.error(error);
       }
     }
@@ -39,15 +39,14 @@ const TaskCard = ({ task, refetch }) => {
   return (
     <div
       ref={setNodeRef}
-      className={`p-3 space-y-1 rounded-sm bg-white dark:bg-black relative cursor-grab active:cursor-grabbing ${openModal?"!z-[23]":"!z-[20]"} `}
+      className={`p-3 space-y-1 rounded-sm bg-white dark:bg-black relative cursor-grab active:cursor-grabbing ${openModal ? "!z-[23]" : "!z-[20]"}`}
       style={style}
     >
-      {/* Buttons (clickable, but not draggable) */}
       <div className="space-x-3 w-fit float-end">
-        <UpdateTaskModal task={task} refetch={refetch} openModal={openModal} setOpenModal={setOpenModal}/>
+        <UpdateTaskModal task={task} refetch={refetch} openModal={openModal} setOpenModal={setOpenModal} />
         <button
           onClick={(e) => {
-            e.stopPropagation(); // Prevent dragging when clicking button
+            e.stopPropagation(); 
             handleDeleteButton(task._id);
           }}
           className="outlineButton activeOutlineButton !px-1 !py-1"
@@ -56,24 +55,28 @@ const TaskCard = ({ task, refetch }) => {
         </button>
       </div>
 
-      {/* Drag Handle (only this div will be draggable) */}
-      <div {...listeners} {...attributes} className="space-y-3 pt-10 cursor-grab active:cursor-grabbing ">
-            <div className="">
-                <h6>{task.taskTitle}</h6>
-                <p>{task.taskDetails}</p>
-            </div>
+      <div
+        {...listeners}
+        {...attributes}
+        className="space-y-3 pt-10 cursor-grab active:cursor-grabbing"
+        onTouchStart={listeners.onStart}
+        onTouchMove={listeners.onMove}
+        onTouchEnd={listeners.onEnd}
+      >
+        <div>
+          <h6>{task.taskTitle}</h6>
+          <p>{task.taskDetails}</p>
+        </div>
 
-            {/* Timestamp */}
-            <div className="grid [&_*]:!text-xs justify-items-center">
-                <b className="">Last Updated at</b>
-                <p className="">
-                    {formattedTime}, {dateFormatted}
-                </p>
-            </div>
+        {/* Timestamp */}
+        <div className="grid [&_*]:!text-xs justify-items-center">
+          <b>Last Updated at</b>
+          <p>{formattedTime}, {dateFormatted}</p>
+        </div>
       </div>
-
     </div>
   );
 };
 
 export default TaskCard;
+

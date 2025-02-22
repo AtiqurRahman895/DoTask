@@ -118,6 +118,15 @@ ol{
 
 /* Custom utilities */
 
+.cursor-grab {
+  touch-action: none;
+}
+
+.cursor-grabbing {
+  touch-action: none;
+}
+
+
 .navbarAnimation {
   background-color: rgba(24, 22, 59, 0.4);
   color: white;
