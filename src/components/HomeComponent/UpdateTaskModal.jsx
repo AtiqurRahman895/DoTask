@@ -5,11 +5,10 @@ import TaskTitleInput from "./TaskTitleInput";
 import TaskDetailsInput from "./TaskDetailsInput";
 import { MdEditSquare } from "react-icons/md";
 
-const UpdateTaskModal = ({task, refetch}) => {
+const UpdateTaskModal = ({task, refetch, openModal, setOpenModal}) => {
   const secureAxios = useSecureAxios();
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDetails, setTaskDetails] = useState("");
-  const [openModal, setOpenModal] = useState(false);
 
   useEffect(()=>{
     setTaskTitle(task?.taskTitle)
@@ -30,7 +29,7 @@ const UpdateTaskModal = ({task, refetch}) => {
       );
       return;
     }
-    const credentials = { taskTitle, taskDetails, lastUpdate:task.lastUpdate };
+    const credentials = { taskTitle, taskDetails };
 
     try {
         await secureAxios.put(`/updateTask/${task?._id}`, credentials)
@@ -52,7 +51,7 @@ const UpdateTaskModal = ({task, refetch}) => {
   return (
     <>
 
-      <button onClick={() => setOpenModal(true)} className="outlineButton activeOutlineButton !px-1 !py-1" >
+      <button onClick={() => { setOpenModal(true)}} className="outlineButton activeOutlineButton !px-1 !py-1" >
             <MdEditSquare className="text-lg"/>
       </button>
       <dialog id="reject_modal" className="!m-0 modal bg-[rgba(0,0,0,.4)]" open={openModal} >
